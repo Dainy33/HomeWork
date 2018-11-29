@@ -14,8 +14,6 @@ public class DiskManager {
 
     private DirectoryManager directoryManager = new DirectoryManager();
 
-    private Semaphore[] semaphores = new Semaphore[2];
-
     private final ReadWriteLock rwLock = new ReentrantReadWriteLock();
     private final Lock readLock = rwLock.readLock();
     private final Lock writeLock = rwLock.writeLock();
@@ -29,13 +27,14 @@ public class DiskManager {
     public DiskManager() {
         for (int i = 0; i < NUMBER_OF_DISKS; i++) {
             disk[i] = new Disk();
-            semaphores[i] = new Semaphore(1);
         }
     }
 
     public void write(int diskNumber, String key, StringBuffer[] content, int fileLength) {
         try {
             writeLock.lock();
+
+            System.out.println(Thread.currentThread().getName() + " created file " + key + " on disk" + diskNumber +" at sector " + diskFreeSectors[diskNumber]);
 
             int startingSector = diskFreeSectors[diskNumber];
             FileInfo fileInfo = new FileInfo(diskNumber, startingSector, fileLength);

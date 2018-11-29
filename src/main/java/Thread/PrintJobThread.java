@@ -1,11 +1,10 @@
 package Thread;
 
+import Util.PrinterResourceProxy;
 import entity.Printer;
 import manager.DiskManager;
 
 public class PrintJobThread implements Runnable{
-
-    private String printerName ;
 
     private DiskManager diskManager = null;
 
@@ -13,16 +12,15 @@ public class PrintJobThread implements Runnable{
 
     private String fileName = null;
 
-    public PrintJobThread(String printerName, DiskManager diskManager,String fileName) {
-        this.printerName = printerName;
+    public PrintJobThread(DiskManager diskManager,String fileName) {
         this.diskManager = diskManager;
         this.fileName = fileName;
-        this.printer = new Printer(printerName,diskManager);
     }
 
     @Override
     public void run() {
         //TODO
+        this.printer = new Printer(diskManager);
         printer.print(fileName);
     }
 }

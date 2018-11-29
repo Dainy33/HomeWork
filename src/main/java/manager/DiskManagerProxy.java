@@ -3,12 +3,13 @@ package manager;
 import entity.Disk;
 import entity.FileInfo;
 
-import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class DiskManager {
+public class DiskManagerProxy {
+
+    private static DiskManagerProxy diskManagerProxy;
 
     private static final int NUMBER_OF_DISKS = 2;
 
@@ -24,10 +25,17 @@ public class DiskManager {
 
     private Disk[] disk = new Disk[NUMBER_OF_DISKS];
 
-    public DiskManager() {
+    public DiskManagerProxy() {
         for (int i = 0; i < NUMBER_OF_DISKS; i++) {
             disk[i] = new Disk();
         }
+    }
+
+    public static DiskManagerProxy newInstance(){
+        if(diskManagerProxy==null){
+            diskManagerProxy = new DiskManagerProxy();
+        }
+        return diskManagerProxy;
     }
 
     public void write(int diskNumber, String key, StringBuffer[] content, int fileLength) {

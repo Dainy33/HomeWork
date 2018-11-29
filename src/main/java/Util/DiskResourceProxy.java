@@ -1,20 +1,20 @@
 package Util;
 
-public class PrinterResourceProxy extends ResourceManager{
+public class DiskResourceProxy extends ResourceManager{
 
-    private static PrinterResourceProxy printerResourceProxy;
+    private static DiskResourceProxy diskResourceProxy;
 
-    public PrinterResourceProxy()
+    public DiskResourceProxy()
     {
-        super(NUMBER_OF_PRINTERS);
+        super(NUMBER_OF_DISKS);
     }
 
-    public static PrinterResourceProxy newInstance() {
+    public static DiskResourceProxy newInstance() {
 
-        if(printerResourceProxy==null){
-            printerResourceProxy = new PrinterResourceProxy();
+        if(diskResourceProxy==null){
+            diskResourceProxy = new DiskResourceProxy();
         }
-        return printerResourceProxy;
+        return diskResourceProxy;
     }
 }
 /**

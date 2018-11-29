@@ -1,13 +1,12 @@
-package manager;
+package Util;
 
 public class ResourceManager {
     protected boolean isFree[];
     protected static final int NUMBER_OF_USERS = 4;
     protected static final int NUMBER_OF_DISKS = 2;
     protected static final int NUMBER_OF_PRINTERS = 3;
-    protected int numberOfItems = 0;
 
-    ResourceManager() {
+    public ResourceManager(int numberOfItems) {
         isFree = new boolean[numberOfItems];
         for (int i = 0; i < isFree.length; ++i)
             isFree[i] = true;

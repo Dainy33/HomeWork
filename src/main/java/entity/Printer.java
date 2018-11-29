@@ -1,25 +1,34 @@
 package entity;
 
+import Util.PrinterResourceProxy;
 import manager.DiskManager;
 
 public class Printer {
 
     private static final String CLASSPATH = "/home/dainy33/Public/";
 
-    private String printerName ;
 
     private DiskManager diskManager = null;
 
-    public Printer(String printerName,DiskManager diskManager) {
-        this.printerName = printerName;
+    public Printer(DiskManager diskManager) {
         this.diskManager = diskManager;
     }
 
-    public void print(String fileName){
+    public void print(String fileName) {
+
+        int printerNumber = PrinterResourceProxy.newInstance().request();
+
         StringBuffer[] stringBuffers = diskManager.read(fileName);
-        for (StringBuffer stringBuffer:stringBuffers) {
-            System.out.println(stringBuffer);
+        for (StringBuffer stringBuffer : stringBuffers) {
+            System.out.println("Printer " + printerNumber + " printing data " + stringBuffer);
+            try {
+                Thread.sleep(2750);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+
+        PrinterResourceProxy.newInstance().release(printerNumber);
 
     }
 }

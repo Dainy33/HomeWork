@@ -1,12 +1,20 @@
-package manager;
+package Util;
 
 public class PrinterResourceProxy extends ResourceManager{
 
-    PrinterResourceProxy()
+    private static PrinterResourceProxy printerResourceProxy;
+
+    public PrinterResourceProxy()
     {
-        isFree = new boolean[NUMBER_OF_PRINTERS];
-        for (int i=0; i<isFree.length; ++i)
-            isFree[i] = true;
+        super(NUMBER_OF_PRINTERS);
+    }
+
+    public static PrinterResourceProxy newInstance() {
+
+        if(printerResourceProxy==null){
+            printerResourceProxy = new PrinterResourceProxy();
+        }
+        return printerResourceProxy;
     }
 }
 /**

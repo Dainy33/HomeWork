@@ -10,6 +10,11 @@ public class Disk {
 
     public void write(int startingSector, StringBuffer data) {
         sectors[startingSector] = data;
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public StringBuffer read(int sector) {

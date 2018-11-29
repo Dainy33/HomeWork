@@ -1,6 +1,7 @@
 package Thread;
 
 import manager.DiskManager;
+import Util.DiskResourceProxy;
 
 import java.io.*;
 
@@ -38,25 +39,23 @@ public class UserThread extends Thread {
                     key = null;
                     content = new StringBuffer[LENGTH];
                     length = 0;
-                    diskNumber = 0;
 
                     key = str.substring(".save ".length());
-
-                    int[] diskFreeSectors = diskManager.getDiskFreeSectors();
-                    System.out.println(Thread.currentThread().getName() + " created file " + key + " on disk" + diskNumber +" at sector " + diskFreeSectors[diskNumber]);
 
                 } else if (str.startsWith(".end")) {
 
 
                     //TODO getDisk  diskNumber = ResourceManager.getDiskNumber();
+                    diskNumber = DiskResourceProxy.newInstance().request();
                     diskManager.write(diskNumber, key, content, length);
+                    DiskResourceProxy.newInstance().release(diskNumber);
 
                 } else if (str.startsWith(".print")) {
 
                     String fileName = str.substring(".print ".length());
 
                     //TODO getPrinter OK?
-                    Thread thread = new Thread(new PrintJobThread("0",diskManager,fileName));
+                    Thread thread = new Thread(new PrintJobThread(diskManager,fileName));
                     thread.start();
 
                 } else {

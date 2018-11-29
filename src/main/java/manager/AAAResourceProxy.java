@@ -1,12 +1,21 @@
 package manager;
 
-public class PrinterResourceProxy extends ResourceManager{
+import Util.ResourceManager;
 
-    PrinterResourceProxy()
+public class AAAResourceProxy extends ResourceManager {
+
+    private static AAAResourceProxy aaaResourceProxy;
+
+    public AAAResourceProxy()
     {
-        isFree = new boolean[NUMBER_OF_PRINTERS];
-        for (int i=0; i<isFree.length; ++i)
-            isFree[i] = true;
+        super(NUMBER_OF_PRINTERS);
+    }
+
+    public synchronized static AAAResourceProxy newInstance() {
+        if (aaaResourceProxy == null) {
+            aaaResourceProxy = new AAAResourceProxy();
+        }
+        return aaaResourceProxy;
     }
 }
 /**
