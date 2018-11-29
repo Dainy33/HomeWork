@@ -10,12 +10,11 @@ public class OS {
     private static final int NUMBER_OF_PRINTERS = 3;
     private static final String CLASSPATH = "/home/dainy33/Public/";
 
-    private DiskManager diskManager = new DiskManager();
 
-    private UserThread userThread1 = new UserThread(CLASSPATH + "USER1.txt", diskManager);
-    private UserThread userThread2 = new UserThread(CLASSPATH + "USER2.txt", diskManager);
-    private UserThread userThread3 = new UserThread(CLASSPATH + "USER3.txt", diskManager);
-    private UserThread userThread4 = new UserThread(CLASSPATH + "USER4.txt", diskManager);
+    private UserThread userThread1 = new UserThread(CLASSPATH + "USER1.txt");
+    private UserThread userThread2 = new UserThread(CLASSPATH + "USER2.txt");
+    private UserThread userThread3 = new UserThread(CLASSPATH + "USER3.txt");
+    private UserThread userThread4 = new UserThread(CLASSPATH + "USER4.txt");
 
 
     @Test

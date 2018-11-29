@@ -11,8 +11,6 @@ public class UserThread extends Thread {
 
     private String filePath = null;
 
-    private DiskManager diskManager = null;
-
     private String key = null;
 
     private int diskNumber = 0;
@@ -21,9 +19,8 @@ public class UserThread extends Thread {
 
     private int length = 0;
 
-    public UserThread(String filePath,DiskManager diskManager) {
+    public UserThread(String filePath) {
         this.filePath = filePath;
-        this.diskManager = diskManager;
     }
 
     @Override
@@ -46,16 +43,14 @@ public class UserThread extends Thread {
 
 
                     //TODO getDisk  diskNumber = ResourceManager.getDiskNumber();
-                    diskNumber = DiskResourceProxy.newInstance().request();
-                    diskManager.write(diskNumber, key, content, length);
-                    DiskResourceProxy.newInstance().release(diskNumber);
+                    DiskManager.newInstance().write(key, content, length);
 
                 } else if (str.startsWith(".print")) {
 
                     String fileName = str.substring(".print ".length());
 
                     //TODO getPrinter OK?
-                    Thread thread = new Thread(new PrintJobThread(diskManager,fileName));
+                    Thread thread = new Thread(new PrintJobThread(fileName));
                     thread.start();
 
                 } else {

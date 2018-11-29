@@ -6,21 +6,18 @@ import manager.DiskManager;
 
 public class PrintJobThread implements Runnable{
 
-    private DiskManager diskManager = null;
-
     private Printer printer = null;
 
     private String fileName = null;
 
-    public PrintJobThread(DiskManager diskManager,String fileName) {
-        this.diskManager = diskManager;
+    public PrintJobThread(String fileName) {
         this.fileName = fileName;
     }
 
     @Override
     public void run() {
         //TODO
-        this.printer = new Printer(diskManager);
+        this.printer = new Printer();
         printer.print(fileName);
     }
 }

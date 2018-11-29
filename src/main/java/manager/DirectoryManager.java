@@ -6,8 +6,11 @@ import java.util.Hashtable;
 
 public class DirectoryManager {
     //<FileName,FileInfo>
-    private Hashtable<String, FileInfo> directory = new Hashtable<String, FileInfo>();
+    private Hashtable<String, FileInfo> directory;
 
+    public DirectoryManager() {
+        directory = new Hashtable<String, FileInfo>();
+    }
 
     public void enter(String key, FileInfo file) {
         directory.put(key, file);
