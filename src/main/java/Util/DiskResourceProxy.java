@@ -1,21 +1,47 @@
 package Util;
 
-public class DiskResourceProxy extends ResourceProxy {
+public class DiskResourceProxy {
 
+    private static boolean isFree[];
+    protected static final int NUMBER_OF_DISKS = 2;
     private static DiskResourceProxy diskResourceProxy;
 
-    public DiskResourceProxy()
-    {
-        super(NUMBER_OF_DISKS);
+    public DiskResourceProxy() {
+        isFree = new boolean[NUMBER_OF_DISKS];
+        for (int i = 0; i < isFree.length; ++i) {
+            isFree[i] = true;
+        }
+        //System.out.println("Init PrinterResourceProxy");
     }
 
     public synchronized static DiskResourceProxy newInstance() {
 
-        if(diskResourceProxy==null){
+        if (diskResourceProxy == null) {
             diskResourceProxy = new DiskResourceProxy();
         }
         return diskResourceProxy;
     }
+
+    public synchronized int request() {
+        while (true) {
+            for (int i = 0; i < isFree.length; ++i)
+                if (isFree[i]) {
+                    isFree[i] = false;
+                    return i;
+                }
+            try {
+                this.wait(); // block until someone releases a Resource
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public synchronized void release(int index) {
+        isFree[index] = true;
+        this.notify(); // let a waiting thread run
+    }
+
 }
 /**
  * @program: Homework8-9

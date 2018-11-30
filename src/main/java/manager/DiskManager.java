@@ -39,10 +39,11 @@ public class DiskManager {
         }
     }
 
-    public static DiskManager newInstance() {
+    public synchronized static DiskManager newInstance() {
 
         if (diskManager == null) {
             diskManager = new DiskManager();
+            //System.out.println("Init DiskManager");
         }
 
         return diskManager;
