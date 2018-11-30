@@ -1,8 +1,6 @@
 package Test;
 
 import Util.DiskResourceProxy;
-import Util.PrinterResourceProxy;
-import entity.Printer;
 
 public class SafeThread extends Thread{
     @Override

@@ -66,7 +66,8 @@ public class DiskManager {
 
             directoryManager.enter(key, fileInfo);
             for (int i = 0; i < fileLength; i++) {
-                disk[diskNumber].write(startingSector + i, content[i]);
+                System.out.println(Thread.currentThread().getName() + " writing data " + content[i] + " to file " + key + " on disk" + diskNumber);
+                disk[diskNumber].write(diskNumber,startingSector + i, content[i]);
             }
             diskFreeSectors[diskNumber] = startingSector + fileLength;
 

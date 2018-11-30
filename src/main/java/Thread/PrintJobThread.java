@@ -1,8 +1,6 @@
 package Thread;
 
-import Util.PrinterResourceProxy;
 import entity.Printer;
-import manager.DiskManager;
 
 public class PrintJobThread implements Runnable{
 

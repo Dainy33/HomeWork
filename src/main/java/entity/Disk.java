@@ -8,8 +8,10 @@ public class Disk {
 
     }
 
-    public void write(int startingSector, StringBuffer data) {
+    public void write(int diskNumber,int startingSector, StringBuffer data) {
         sectors[startingSector] = data;
+        System.out.println("Disk " + diskNumber + " writing data " + data + " at sector " + startingSector);
+
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {

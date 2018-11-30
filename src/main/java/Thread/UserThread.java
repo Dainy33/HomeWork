@@ -1,7 +1,6 @@
 package Thread;
 
 import manager.DiskManager;
-import Util.DiskResourceProxy;
 
 import java.io.*;
 
@@ -40,14 +39,12 @@ public class UserThread extends Thread {
                 } else if (str.startsWith(".end")) {
 
 
-                    //TODO getDisk  diskNumber = ResourceProxy.getDiskNumber();
                     DiskManager.newInstance().write(key, content, length);
 
                 } else if (str.startsWith(".print")) {
 
                     String fileName = str.substring(".print ".length());
 
-                    //TODO getPrinter OK?
                     Thread thread = new Thread(new PrintJobThread(fileName));
                     thread.start();
 
