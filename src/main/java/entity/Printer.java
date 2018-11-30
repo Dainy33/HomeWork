@@ -1,5 +1,6 @@
 package entity;
 
+import Util.FileUtil;
 import Util.PrinterResourceProxy;
 import manager.DiskManager;
 
@@ -17,6 +18,7 @@ public class Printer {
         StringBuffer[] stringBuffers = DiskManager.newInstance().read(fileName);
         for (StringBuffer stringBuffer : stringBuffers) {
             System.out.println("Printer " + printerNumber + " printing data " + stringBuffer);
+            FileUtil.writeFile(CLASSPATH+fileName,stringBuffer.append("\r").toString());
             try {
                 Thread.sleep(2750);
             } catch (InterruptedException e) {
