@@ -1,6 +1,6 @@
 package Util;
 
-public class DiskResourceProxy extends ResourceManager{
+public class DiskResourceProxy extends ResourceProxy {
 
     private static DiskResourceProxy diskResourceProxy;
 

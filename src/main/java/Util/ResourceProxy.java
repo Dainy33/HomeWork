@@ -1,12 +1,12 @@
 package Util;
 
-public class ResourceManager {
-    protected boolean isFree[];
+public class ResourceProxy {
+    protected static boolean isFree[];
     protected static final int NUMBER_OF_USERS = 4;
     protected static final int NUMBER_OF_DISKS = 2;
     protected static final int NUMBER_OF_PRINTERS = 3;
 
-    public ResourceManager(int numberOfItems) {
+    public ResourceProxy(int numberOfItems) {
         isFree = new boolean[numberOfItems];
         for (int i = 0; i < isFree.length; ++i)
             isFree[i] = true;

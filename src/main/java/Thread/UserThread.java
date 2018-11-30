@@ -13,8 +13,6 @@ public class UserThread extends Thread {
 
     private String key = null;
 
-    private int diskNumber = 0;
-
     private StringBuffer[] content = new StringBuffer[LENGTH];
 
     private int length = 0;
@@ -42,16 +40,16 @@ public class UserThread extends Thread {
                 } else if (str.startsWith(".end")) {
 
 
-                    //TODO getDisk  diskNumber = ResourceManager.getDiskNumber();
+                    //TODO getDisk  diskNumber = ResourceProxy.getDiskNumber();
                     DiskManager.newInstance().write(key, content, length);
 
                 } else if (str.startsWith(".print")) {
 
-                    String fileName = str.substring(".print ".length());
-
-                    //TODO getPrinter OK?
-                    Thread thread = new Thread(new PrintJobThread(fileName));
-                    thread.start();
+//                    String fileName = str.substring(".print ".length());
+//
+//                    //TODO getPrinter OK?
+//                    Thread thread = new Thread(new PrintJobThread(fileName));
+//                    thread.start();
 
                 } else {
                     content[length] = new StringBuffer(str);

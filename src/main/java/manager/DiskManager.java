@@ -18,22 +18,26 @@ public class DiskManager {
 
     private static int diskNumber ;
 
-    private static final ReadWriteLock rwLock = new ReentrantReadWriteLock();
-    private static final Lock readLock = rwLock.readLock();
-    private static final Lock writeLock = rwLock.writeLock();
+    private static Disk[] disk = new Disk[NUMBER_OF_DISKS];
+
+    private static final ReadWriteLock []rwLock = new ReentrantReadWriteLock[2];
+    private static final Lock []readLock = new Lock[2];
+    private static final Lock []writeLock = new Lock[2];
 
     //private int[] diskFreeSectors = {0, 0};
     private static int[] diskFreeSectors = new int[NUMBER_OF_DISKS];
 
-    private static Disk[] disk = new Disk[NUMBER_OF_DISKS];
 
     public DiskManager() {
-        diskNumber = 0;
+        diskNumber = -1;
         directoryManager = new DirectoryManager();
 
         for (int i = 0; i < NUMBER_OF_DISKS; i++) {
             disk[i] = new Disk();
             diskFreeSectors[i] = 0;
+            rwLock[i] = new ReentrantReadWriteLock();
+            readLock[i] = rwLock[i].readLock();
+            writeLock[i] = rwLock[i].writeLock();
         }
     }
 
@@ -52,7 +56,7 @@ public class DiskManager {
 
             diskNumber = DiskResourceProxy.newInstance().request();
 
-            writeLock.lock();
+            //writeLock[diskNumber].lock();
 
             System.out.println(Thread.currentThread().getName() + " created file " + key + " on disk" + diskNumber + " at sector " + diskFreeSectors[diskNumber]);
 
@@ -67,7 +71,7 @@ public class DiskManager {
 
         } finally {
 
-            writeLock.unlock();
+            //writeLock[diskNumber].unlock();
 
             DiskResourceProxy.newInstance().release(diskNumber);
         }
@@ -75,7 +79,6 @@ public class DiskManager {
 
     public StringBuffer[] read(String key) {
         try {
-            readLock.lock();
 
             FileInfo fileInfo = directoryManager.lookup(key);
 
@@ -92,7 +95,7 @@ public class DiskManager {
 
             return stringBuffers;
         } finally {
-            readLock.unlock();
+           // readLock.unlock();
         }
     }
 

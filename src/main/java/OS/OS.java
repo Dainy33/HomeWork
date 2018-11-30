@@ -1,6 +1,7 @@
 package OS;
 
 import Thread.UserThread;
+import Util.DiskResourceProxy;
 import manager.DiskManager;
 import org.junit.Test;
 
@@ -26,6 +27,13 @@ public class OS {
         userThread4.start();
         Thread.sleep(1000000000);
         System.out.println("__________________________________________");
+    }
+
+    @Test
+    public void Proxy() {
+        System.out.println(DiskResourceProxy.newInstance().request());
+        System.out.println(DiskResourceProxy.newInstance().request());
+        System.out.println(DiskResourceProxy.newInstance().request());
     }
 
 }

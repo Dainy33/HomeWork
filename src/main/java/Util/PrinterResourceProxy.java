@@ -1,6 +1,6 @@
 package Util;
 
-public class PrinterResourceProxy extends ResourceManager{
+public class PrinterResourceProxy extends ResourceProxy {
 
     private static PrinterResourceProxy printerResourceProxy;
 
