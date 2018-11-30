@@ -1,9 +1,8 @@
 package OS;
 
 import Thread.UserThread;
-import Util.DiskResourceProxy;
-import manager.DiskManager;
 import org.junit.Test;
+import Test.SafeThread;
 
 public class OS {
     private static final int NUMBER_OF_USERS = 4;
@@ -31,9 +30,16 @@ public class OS {
 
     @Test
     public void Proxy() {
-        System.out.println(DiskResourceProxy.newInstance().request());
-        System.out.println(DiskResourceProxy.newInstance().request());
-        System.out.println(DiskResourceProxy.newInstance().request());
+        SafeThread safeThread0 = new SafeThread();
+        SafeThread safeThread1 = new SafeThread();
+        SafeThread safeThread2 = new SafeThread();
+        SafeThread safeThread3 = new SafeThread();
+
+        safeThread0.start();
+        safeThread1.start();
+        safeThread2.start();
+        safeThread3.start();
+
     }
 
 }

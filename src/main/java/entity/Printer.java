@@ -16,7 +16,7 @@ public class Printer {
 
         StringBuffer[] stringBuffers = DiskManager.newInstance().read(fileName);
         for (StringBuffer stringBuffer : stringBuffers) {
-           // System.out.println("Printer " + printerNumber + " printing data " + stringBuffer);
+            System.out.println("Printer " + printerNumber + " printing data " + stringBuffer);
             try {
                 Thread.sleep(2750);
             } catch (InterruptedException e) {

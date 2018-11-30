@@ -16,8 +16,6 @@ public class DiskManager {
 
     private static DirectoryManager directoryManager;
 
-    private static int diskNumber ;
-
     private static Disk[] disk = new Disk[NUMBER_OF_DISKS];
 
     private static final ReadWriteLock []rwLock = new ReentrantReadWriteLock[2];
@@ -29,7 +27,7 @@ public class DiskManager {
 
 
     public DiskManager() {
-        diskNumber = -1;
+
         directoryManager = new DirectoryManager();
 
         for (int i = 0; i < NUMBER_OF_DISKS; i++) {
@@ -52,11 +50,13 @@ public class DiskManager {
 
 
     public void write(String key, StringBuffer[] content, int fileLength) {
+
+        //diskNumber必须为方法的局部变量
+        int  diskNumber = -1;
+
         try {
 
             diskNumber = DiskResourceProxy.newInstance().request();
-
-            //writeLock[diskNumber].lock();
 
             System.out.println(Thread.currentThread().getName() + " created file " + key + " on disk" + diskNumber + " at sector " + diskFreeSectors[diskNumber]);
 
@@ -70,8 +70,6 @@ public class DiskManager {
             diskFreeSectors[diskNumber] = startingSector + fileLength;
 
         } finally {
-
-            //writeLock[diskNumber].unlock();
 
             DiskResourceProxy.newInstance().release(diskNumber);
         }

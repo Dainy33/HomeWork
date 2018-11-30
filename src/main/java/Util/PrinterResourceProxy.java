@@ -2,14 +2,14 @@ package Util;
 
 public class PrinterResourceProxy extends ResourceProxy {
 
-    private static PrinterResourceProxy printerResourceProxy;
+    private  static PrinterResourceProxy printerResourceProxy;
 
     public PrinterResourceProxy()
     {
         super(NUMBER_OF_PRINTERS);
     }
 
-    public static PrinterResourceProxy newInstance() {
+    public synchronized static PrinterResourceProxy newInstance() {
 
         if(printerResourceProxy==null){
             printerResourceProxy = new PrinterResourceProxy();

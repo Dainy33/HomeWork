@@ -9,7 +9,7 @@ public class DiskResourceProxy extends ResourceProxy {
         super(NUMBER_OF_DISKS);
     }
 
-    public static DiskResourceProxy newInstance() {
+    public synchronized static DiskResourceProxy newInstance() {
 
         if(diskResourceProxy==null){
             diskResourceProxy = new DiskResourceProxy();

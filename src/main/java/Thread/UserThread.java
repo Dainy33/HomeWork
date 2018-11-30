@@ -45,11 +45,11 @@ public class UserThread extends Thread {
 
                 } else if (str.startsWith(".print")) {
 
-//                    String fileName = str.substring(".print ".length());
-//
-//                    //TODO getPrinter OK?
-//                    Thread thread = new Thread(new PrintJobThread(fileName));
-//                    thread.start();
+                    String fileName = str.substring(".print ".length());
+
+                    //TODO getPrinter OK?
+                    Thread thread = new Thread(new PrintJobThread(fileName));
+                    thread.start();
 
                 } else {
                     content[length] = new StringBuffer(str);
