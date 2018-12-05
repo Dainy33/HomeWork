@@ -1,6 +1,6 @@
-package Test;
+package com.dainy33.naughty.Test;
 
-import Util.DiskResourceProxy;
+import com.dainy33.naughty.Util.DiskResourceProxy;
 
 public class SafeThread extends Thread{
     @Override

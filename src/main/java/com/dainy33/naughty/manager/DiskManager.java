@@ -1,8 +1,8 @@
-package manager;
+package com.dainy33.naughty.manager;
 
-import Util.DiskResourceProxy;
-import entity.Disk;
-import entity.FileInfo;
+import com.dainy33.naughty.Util.DiskResourceProxy;
+import com.dainy33.naughty.entity.Disk;
+import com.dainy33.naughty.entity.FileInfo;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;

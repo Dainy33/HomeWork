@@ -1,12 +1,12 @@
-package Util;
+package com.dainy33.naughty.Util;
 
 public class DiskResourceProxy {
 
     private static boolean isFree[];
-    protected static final int NUMBER_OF_DISKS = 2;
+    private static final int NUMBER_OF_DISKS = 2;
     private static DiskResourceProxy diskResourceProxy;
 
-    public DiskResourceProxy() {
+    private DiskResourceProxy() {
         isFree = new boolean[NUMBER_OF_DISKS];
         for (int i = 0; i < isFree.length; ++i) {
             isFree[i] = true;

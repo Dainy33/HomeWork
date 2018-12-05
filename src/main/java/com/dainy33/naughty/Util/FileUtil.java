@@ -1,4 +1,4 @@
-package Util;
+package com.dainy33.naughty.Util;
 
 import java.io.*;
 

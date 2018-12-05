@@ -1,4 +1,4 @@
-package entity;
+package com.dainy33.naughty.entity;
 
 public class FileInfo {
     private int diskNumber;

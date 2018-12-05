@@ -1,6 +1,6 @@
-package Thread;
+package com.dainy33.naughty.Thread;
 
-import entity.Printer;
+import com.dainy33.naughty.entity.Printer;
 
 public class PrintJobThread implements Runnable{
 

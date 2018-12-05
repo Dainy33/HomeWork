@@ -1,8 +1,8 @@
-package OS;
+package com.dainy33.naughty.OS;
 
-import Thread.UserThread;
+import com.dainy33.naughty.Thread.UserThread;
 import org.junit.Test;
-import Test.SafeThread;
+import com.dainy33.naughty.Test.SafeThread;
 
 public class OS {
     private static final int NUMBER_OF_USERS = 4;

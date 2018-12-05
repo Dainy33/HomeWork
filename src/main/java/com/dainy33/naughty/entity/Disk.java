@@ -1,4 +1,4 @@
-package entity;
+package com.dainy33.naughty.entity;
 
 public class Disk {
     private static final int NUM_SECTORS = 1024;

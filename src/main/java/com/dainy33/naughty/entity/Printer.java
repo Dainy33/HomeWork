@@ -1,8 +1,8 @@
-package entity;
+package com.dainy33.naughty.entity;
 
-import Util.FileUtil;
-import Util.PrinterResourceProxy;
-import manager.DiskManager;
+import com.dainy33.naughty.Util.FileUtil;
+import com.dainy33.naughty.Util.PrinterResourceProxy;
+import com.dainy33.naughty.manager.DiskManager;
 
 public class Printer {
 

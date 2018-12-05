@@ -1,6 +1,6 @@
-package Thread;
+package com.dainy33.naughty.Thread;
 
-import manager.DiskManager;
+import com.dainy33.naughty.manager.DiskManager;
 
 import java.io.*;
 

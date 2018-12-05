@@ -1,6 +1,6 @@
-package manager;
+package com.dainy33.naughty.manager;
 
-import entity.FileInfo;
+import com.dainy33.naughty.entity.FileInfo;
 
 import java.util.Hashtable;
 
