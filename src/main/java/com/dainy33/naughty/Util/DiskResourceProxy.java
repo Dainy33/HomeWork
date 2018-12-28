@@ -1,5 +1,7 @@
 package com.dainy33.naughty.Util;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 public class DiskResourceProxy {
 
     private static boolean isFree[];
